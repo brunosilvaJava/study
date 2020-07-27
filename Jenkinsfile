@@ -5,17 +5,25 @@ pipeline {
 
     stages {
         stage('Clone') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
         stage('Clean') {
-            sh "./mvnw clean"
+            steps {
+                echo "./mvnw clean"
+            }
         }
         stage("Build") {
-            sh "./mvnw package -x test"
+            steps {
+                echo "./mvnw package -x test"
+            }
         }
         stage('Test') {
-            sh "./mvnw test"
-            step([$class: "JUnitResultArchiver", testResults: "**/target/surefire-reports/TEST-*.xml"])
+            steps {
+                echo "./mvnw test"
+                step([$class: "JUnitResultArchiver", testResults: "**/target/surefire-reports/TEST-*.xml"])
+            }
         }
     }
 }
