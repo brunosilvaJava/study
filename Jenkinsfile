@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "./mvnw test"
-                step([$class: "JUnitResultArchiver", testResults: "**/target/surefire-reports/TEST-*.xml"])
+                //step([$class: "JUnitResultArchiver", testResults: "**/target/surefire-reports/TEST-*.xml"])
             }
         }
     }
