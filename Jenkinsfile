@@ -25,5 +25,11 @@ pipeline {
                 //step([$class: "JUnitResultArchiver", testResults: "**/target/surefire-reports/TEST-*.xml"])
             }
         }
+        stage('JaCoCo') {
+            steps {
+                echo 'Code Coverage'
+                jacoco()
+            }
+        }
     }
 }
